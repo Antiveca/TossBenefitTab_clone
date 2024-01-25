@@ -68,6 +68,11 @@
                                             </constraints>
                                         </collectionViewCellContentView>
                                         <size key="customSize" width="389" height="128"/>
+                                        <connections>
+                                            <outlet property="descriptionLabel" destination="snB-pU-CaE" id="u7Z-jL-DFb"/>
+                                            <outlet property="iconImage" destination="55J-b2-uzP" id="ZnO-3a-Ese"/>
+                                            <outlet property="pointLabel" destination="nJL-eK-x3D" id="TS0-oD-gzB"/>
+                                        </connections>
                                     </collectionViewCell>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="TodayBenefitCell" id="wu7-bs-o5h" customClass="TodayBenefitCell" customModule="TossBenefitTab" customModuleProvider="target">
                                         <rect key="frame" x="12.5" y="138" width="389" height="250"/>
@@ -84,6 +89,12 @@
                                                     </constraints>
                                                     <imageReference key="image" image="sparkles" catalog="system" renderingMode="original"/>
                                                 </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Icm-2B-heY">
+                                                    <rect key="frame" x="163.5" y="120" width="62" height="29"/>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aJ1-5x-kA2">
                                                     <rect key="frame" x="143" y="169" width="103" height="56"/>
                                                     <color key="backgroundColor" name="AccentColor"/>
@@ -94,12 +105,6 @@
                                                         <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     </state>
                                                 </button>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Icm-2B-heY">
-                                                    <rect key="frame" x="163.5" y="120" width="62" height="29"/>
-                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstAttribute="bottom" secondItem="aJ1-5x-kA2" secondAttribute="bottom" constant="25" id="WLU-sR-amg"/>
@@ -112,6 +117,10 @@
                                             </constraints>
                                         </collectionViewCellContentView>
                                         <size key="customSize" width="389" height="250"/>
+                                        <connections>
+                                            <outlet property="actionButton" destination="aJ1-5x-kA2" id="aN3-jN-xJI"/>
+                                            <outlet property="titleLabel" destination="Icm-2B-heY" id="s4A-SJ-eJU"/>
+                                        </connections>
                                     </collectionViewCell>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="BenefitCell" id="cMP-Qb-cA2" customClass="BenefitCell" customModule="TossBenefitTab" customModuleProvider="target">
                                         <rect key="frame" x="12.5" y="398" width="389" height="130"/>
@@ -150,6 +159,11 @@
                                                 <constraint firstItem="mDo-QS-8SH" firstAttribute="leading" secondItem="F8j-Yh-syu" secondAttribute="leading" id="ry9-PB-1Tw"/>
                                             </constraints>
                                         </collectionViewCellContentView>
+                                        <connections>
+                                            <outlet property="benefitIconImage" destination="cvJ-6a-t4r" id="GkI-In-uJo"/>
+                                            <outlet property="descriptionLabel" destination="F8j-Yh-syu" id="tfT-ll-6sg"/>
+                                            <outlet property="titleLabel" destination="mDo-QS-8SH" id="hc9-7T-U7X"/>
+                                        </connections>
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
