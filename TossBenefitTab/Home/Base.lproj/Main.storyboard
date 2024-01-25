@@ -4,6 +4,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -75,30 +76,39 @@
                                             <rect key="frame" x="0.0" y="0.0" width="389" height="250"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sparkles" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="0YX-wO-Igs">
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="0YX-wO-Igs">
                                                     <rect key="frame" x="169.5" y="29" width="50" height="71"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="50" id="V8f-9B-VZd"/>
                                                         <constraint firstAttribute="height" constant="70" id="voQ-ce-Ngd"/>
                                                     </constraints>
+                                                    <imageReference key="image" image="sparkles" catalog="system" renderingMode="original"/>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Icm-2B-heY">
-                                                    <rect key="frame" x="174" y="163" width="42" height="21"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aJ1-5x-kA2">
+                                                    <rect key="frame" x="143" y="169" width="103" height="56"/>
+                                                    <color key="backgroundColor" name="AccentColor"/>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                                                    <inset key="contentEdgeInsets" minX="20" minY="10" maxX="20" maxY="10"/>
+                                                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                    <state key="normal" title="클릭하기">
+                                                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    </state>
+                                                </button>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Icm-2B-heY">
+                                                    <rect key="frame" x="163.5" y="120" width="62" height="29"/>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aJ1-5x-kA2">
-                                                    <rect key="frame" x="157" y="201" width="75" height="35"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <state key="normal" title="Button"/>
-                                                    <buttonConfiguration key="configuration" style="filled" title="Button"/>
-                                                </button>
                                             </subviews>
                                             <constraints>
+                                                <constraint firstAttribute="bottom" secondItem="aJ1-5x-kA2" secondAttribute="bottom" constant="25" id="WLU-sR-amg"/>
                                                 <constraint firstItem="0YX-wO-Igs" firstAttribute="centerX" secondItem="n3K-wE-Jfs" secondAttribute="centerX" id="fDv-gn-clA"/>
                                                 <constraint firstItem="0YX-wO-Igs" firstAttribute="top" secondItem="n3K-wE-Jfs" secondAttribute="top" constant="30" id="kp3-0V-VqQ"/>
+                                                <constraint firstItem="Icm-2B-heY" firstAttribute="centerX" secondItem="n3K-wE-Jfs" secondAttribute="centerX" id="mQA-ZR-ViS"/>
+                                                <constraint firstItem="Icm-2B-heY" firstAttribute="top" secondItem="0YX-wO-Igs" secondAttribute="bottom" constant="20" id="mjI-Vm-OdV"/>
+                                                <constraint firstItem="aJ1-5x-kA2" firstAttribute="top" secondItem="Icm-2B-heY" secondAttribute="bottom" constant="20" id="na7-HQ-zOh"/>
+                                                <constraint firstItem="aJ1-5x-kA2" firstAttribute="centerX" secondItem="n3K-wE-Jfs" secondAttribute="centerX" id="ps0-kZ-VU0"/>
                                             </constraints>
                                         </collectionViewCellContentView>
                                         <size key="customSize" width="389" height="250"/>
@@ -118,13 +128,13 @@
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F8j-Yh-syu">
-                                                    <rect key="frame" x="100" y="39.5" width="44" height="21.5"/>
+                                                    <rect key="frame" x="100" y="39.5" width="44" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                                     <color key="textColor" systemColor="systemGrayColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mDo-QS-8SH">
-                                                    <rect key="frame" x="100" y="66" width="47" height="21.5"/>
+                                                    <rect key="frame" x="100" y="65.5" width="47" height="22"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
                                                     <color key="textColor" name="AccentColor"/>
                                                     <nil key="highlightedColor"/>
