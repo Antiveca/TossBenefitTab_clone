@@ -123,35 +123,35 @@
                                         </connections>
                                     </collectionViewCell>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="BenefitCell" id="cMP-Qb-cA2" customClass="BenefitCell" customModule="TossBenefitTab" customModuleProvider="target">
-                                        <rect key="frame" x="12.5" y="398" width="389" height="130"/>
+                                        <rect key="frame" x="12.5" y="398" width="389" height="120"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="K43-NM-QuE">
-                                            <rect key="frame" x="0.0" y="0.0" width="389" height="130"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="389" height="120"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="cvJ-6a-t4r">
-                                                    <rect key="frame" x="0.0" y="25" width="80" height="80"/>
+                                                    <rect key="frame" x="0.0" y="20" width="80" height="80"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="80" id="eQn-3A-o4t"/>
                                                         <constraint firstAttribute="height" constant="80" id="o7H-P6-nbC"/>
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F8j-Yh-syu">
-                                                    <rect key="frame" x="100" y="39.5" width="44" height="21"/>
+                                                    <rect key="frame" x="100" y="34.5" width="44" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                                     <color key="textColor" systemColor="systemGrayColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mDo-QS-8SH">
-                                                    <rect key="frame" x="100" y="65.5" width="47" height="22"/>
+                                                    <rect key="frame" x="100" y="60.5" width="47" height="22"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
                                                     <color key="textColor" name="AccentColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstAttribute="bottom" secondItem="cvJ-6a-t4r" secondAttribute="bottom" constant="25" id="5Hd-EX-LTM"/>
-                                                <constraint firstItem="cvJ-6a-t4r" firstAttribute="top" secondItem="K43-NM-QuE" secondAttribute="top" constant="25" id="Dnv-6U-A3s"/>
+                                                <constraint firstAttribute="bottom" secondItem="cvJ-6a-t4r" secondAttribute="bottom" constant="20" id="5Hd-EX-LTM"/>
+                                                <constraint firstItem="cvJ-6a-t4r" firstAttribute="top" secondItem="K43-NM-QuE" secondAttribute="top" constant="20" id="Dnv-6U-A3s"/>
                                                 <constraint firstItem="F8j-Yh-syu" firstAttribute="centerY" secondItem="cvJ-6a-t4r" secondAttribute="centerY" constant="-15" id="G2k-JR-879"/>
                                                 <constraint firstItem="F8j-Yh-syu" firstAttribute="leading" secondItem="cvJ-6a-t4r" secondAttribute="trailing" constant="20" id="R1h-VB-geL"/>
                                                 <constraint firstItem="mDo-QS-8SH" firstAttribute="top" secondItem="F8j-Yh-syu" secondAttribute="bottom" constant="5" id="RtG-5H-rfw"/>

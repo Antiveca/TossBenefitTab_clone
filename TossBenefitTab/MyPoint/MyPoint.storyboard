@@ -21,10 +21,10 @@
                                 <rect key="frame" x="0.0" y="48" width="414" height="814"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="X86-PD-Bq9">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="252.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="250"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="GWG-uc-X6X">
-                                                <rect key="frame" x="30" y="115.5" width="354" height="67"/>
+                                                <rect key="frame" x="30" y="113" width="354" height="67"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="내 포인트" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zF7-aT-tqc">
                                                         <rect key="frame" x="0.0" y="0.0" width="354" height="27"/>
@@ -44,7 +44,7 @@
                                                 </subviews>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="pgr-nl-G4R">
-                                                <rect key="frame" x="30" y="192.5" width="354" height="60"/>
+                                                <rect key="frame" x="30" y="190" width="354" height="60"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZpC-Un-wU7">
                                                         <rect key="frame" x="0.0" y="0.0" width="169.5" height="60"/>
@@ -68,27 +68,26 @@
                                         </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" secondItem="X86-PD-Bq9" secondAttribute="height" multiplier="100:61" id="3Bq-QF-veY"/>
                                             <constraint firstAttribute="bottom" secondItem="pgr-nl-G4R" secondAttribute="bottom" id="OCk-Tp-4Ts"/>
                                             <constraint firstItem="pgr-nl-G4R" firstAttribute="leading" secondItem="X86-PD-Bq9" secondAttribute="leading" constant="30" id="XsY-S2-3kR"/>
                                             <constraint firstItem="GWG-uc-X6X" firstAttribute="centerX" secondItem="X86-PD-Bq9" secondAttribute="centerX" id="Yoa-QI-l5G"/>
                                             <constraint firstItem="pgr-nl-G4R" firstAttribute="top" secondItem="GWG-uc-X6X" secondAttribute="bottom" constant="10" id="bzt-NT-AIj"/>
-                                            <constraint firstAttribute="height" relation="lessThanOrEqual" constant="500" id="fck-Kw-pkX"/>
+                                            <constraint firstAttribute="height" constant="250" id="fck-Kw-pkX"/>
                                             <constraint firstItem="pgr-nl-G4R" firstAttribute="centerX" secondItem="X86-PD-Bq9" secondAttribute="centerX" id="h1U-YM-Jn2"/>
                                             <constraint firstItem="GWG-uc-X6X" firstAttribute="leading" secondItem="X86-PD-Bq9" secondAttribute="leading" constant="30" id="xCC-R6-g1i"/>
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lsu-gj-SGn">
-                                        <rect key="frame" x="0.0" y="252.5" width="414" height="561.5"/>
+                                        <rect key="frame" x="0.0" y="250" width="414" height="564"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="내역이 없어요 포인트를 모아봐요!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YUO-aI-dmq">
-                                                <rect key="frame" x="117.5" y="192" width="179" height="57.5"/>
+                                                <rect key="frame" x="117.5" y="193.5" width="179" height="57.5"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sex-fk-SPM">
-                                                <rect key="frame" x="169" y="269.5" width="76" height="38"/>
+                                                <rect key="frame" x="169" y="271" width="76" height="38"/>
                                                 <state key="normal" title="Button"/>
                                                 <buttonConfiguration key="configuration" style="filled" title="모으기">
                                                     <fontDescription key="titleFontDescription" type="boldSystem" pointSize="20"/>

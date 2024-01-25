@@ -15,7 +15,7 @@ class BenefitCell: UICollectionViewCell {
     
     func configure(item: Benefit) {
         benefitIconImage.image = UIImage(named: item.imageName)
-        descriptionLabel.text = item.title
+        descriptionLabel.text = item.description
         titleLabel.text = item.title
     }
 }
