@@ -132,8 +132,8 @@
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="cvJ-6a-t4r">
                                                     <rect key="frame" x="0.0" y="20" width="80" height="80"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="80" id="eQn-3A-o4t"/>
-                                                        <constraint firstAttribute="height" constant="80" id="o7H-P6-nbC"/>
+                                                        <constraint firstAttribute="width" constant="80" id="HO5-JD-teW"/>
+                                                        <constraint firstAttribute="width" secondItem="cvJ-6a-t4r" secondAttribute="height" multiplier="1:1" id="scj-DN-3q5"/>
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F8j-Yh-syu">

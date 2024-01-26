@@ -13,6 +13,7 @@ import UIKit
 
 class BenefitListViewController: UIViewController {
     
+    
     @IBOutlet weak var collectionView: UICollectionView!
     
     typealias Item = AnyHashable
@@ -106,7 +107,7 @@ extension BenefitListViewController: UICollectionViewDelegate {
         
         if let benefit = item as? Benefit {
             let sb = UIStoryboard(name: "ButtonBenefit", bundle: nil)
-            let vc = sb.instantiateViewController(withIdentifier: "buttonBenefitViewController") as! buttonBenefitViewController
+            let vc = sb.instantiateViewController(withIdentifier: "ButtonBenefitViewController") as! ButtonBenefitViewController
             vc.benefit = benefit
             self.navigationController?.pushViewController(vc, animated: true)
             
