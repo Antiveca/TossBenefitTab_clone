@@ -10,6 +10,7 @@
 //혜택관련 셀을 누르면 혜택 상세뷰로 넘어감
 
 import UIKit
+import Combine
 
 class BenefitListViewController: UIViewController {
     
@@ -25,19 +26,43 @@ class BenefitListViewController: UIViewController {
     
     var datasource: UICollectionViewDiffableDataSource<Section, Item>!
     
-    //    var todaySectionItems: [AnyHashable] = [MyPoint.default, Benefit.today]
-    var todaySectionItems: [AnyHashable] = TodaySectionItem(point: .default, today: .today).sectionItems
-    var otherSectionItems: [AnyHashable] = Benefit.others
-    //
+//    var todaySectionItems: [AnyHashable] = [MyPoint.default, Benefit.today]
+//    var todaySectionItems: [AnyHashable] = TodaySectionItem(point: .default, today: .today).sectionItems
+//    var otherSectionItems: [AnyHashable] = Benefit.others
+
+    @Published var todaySectionItems: [AnyHashable] = []
+    @Published var otherSectionItems: [AnyHashable] = []
+    
+    var subscriptions = Set<AnyCancellable>()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupUI()
+        configureCollectionView()
+        bind()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
         
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) { //0.5초 딜레이로 받음(느린 네트워크 상황을 묘사)
+            self.todaySectionItems = TodaySectionItem(point: .default, today: .today).sectionItems
+        }
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2.5) { //2.5초 딜레이로 받음(느린 네트워크 상황을 묘사)
+            self.otherSectionItems = Benefit.others
+        }
+    }
+    
+    private func setupUI() {
+        navigationItem.title = "혜택"
+    }
+    
+    private func configureCollectionView() {
         //data, presentation, layout
         datasource = UICollectionViewDiffableDataSource<Section, Item>(collectionView: collectionView, cellProvider: { collectionView, indexPath, item in
             guard let section = Section(rawValue: indexPath.section) else { return nil }
             
             let cell = self.configureCell(for: section, item: item, collectionView: collectionView, indexPath: indexPath)
-            
             return cell
         })
         
@@ -49,9 +74,26 @@ class BenefitListViewController: UIViewController {
         
         collectionView.collectionViewLayout = layout()
         collectionView.delegate = self
+    }
+    
+    private func bind() {
+        $todaySectionItems
+            .receive(on: RunLoop.main)
+            .sink { items in
+                self.applySnapshot(items: items, section: Section.today)
+            }.store(in: &subscriptions)
         
-        navigationItem.title = "혜택"
-        
+        $otherSectionItems
+            .receive(on: RunLoop.main)
+            .sink { items in
+                self.applySnapshot(items: items, section: Section.other)
+            }.store(in: &subscriptions)
+    }
+    
+    private func applySnapshot(items: [Item], section:Section) {
+        var snapshot = datasource.snapshot()
+        snapshot.appendItems(items, toSection: section)
+        datasource.apply(snapshot)
     }
     
     private func configureCell(for section: Section, item: Item, collectionView: UICollectionView, indexPath: IndexPath) -> UICollectionViewCell? {
@@ -101,7 +143,7 @@ class BenefitListViewController: UIViewController {
 }
 
 extension BenefitListViewController: UICollectionViewDelegate {
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) { //indexPath로 선택한 아이템의 값을 받음
         let item = datasource.itemIdentifier(for: indexPath)
         print("----> \(item)")
         

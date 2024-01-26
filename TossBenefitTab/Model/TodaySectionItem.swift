@@ -16,6 +16,6 @@ struct TodaySectionItem {
     }
 }
 
-extension TodaySectionItem {
-    static let mock = TodaySectionItem(point: MyPoint(point: 0), today: Benefit.walk)
-}
+//extension TodaySectionItem {
+//    static let mock = TodaySectionItem(point: MyPoint(point: 0), today: Benefit.walk)
+//}
