@@ -26,12 +26,9 @@ class BenefitListViewController: UIViewController {
     
     var datasource: UICollectionViewDiffableDataSource<Section, Item>!
     
-//    var todaySectionItems: [AnyHashable] = [MyPoint.default, Benefit.today]
-//    var todaySectionItems: [AnyHashable] = TodaySectionItem(point: .default, today: .today).sectionItems
-//    var otherSectionItems: [AnyHashable] = Benefit.others
-
-    @Published var todaySectionItems: [AnyHashable] = []
-    @Published var otherSectionItems: [AnyHashable] = []
+//    @Published var todaySectionItems: [AnyHashable] = []
+//    @Published var otherSectionItems: [AnyHashable] = []
+    let benefitListViewModel: BenefitListViewModel = BenefitListViewModel()
     
     var subscriptions = Set<AnyCancellable>()
     
@@ -40,18 +37,18 @@ class BenefitListViewController: UIViewController {
         setupUI()
         configureCollectionView()
         bind()
+        benefitListViewModel.fetchItems()
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) { //0.5초 딜레이로 받음(느린 네트워크 상황을 묘사)
-            self.todaySectionItems = TodaySectionItem(point: .default, today: .today).sectionItems
-        }
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2.5) { //2.5초 딜레이로 받음(느린 네트워크 상황을 묘사)
-            self.otherSectionItems = Benefit.others
-        }
-    }
+//    override func viewDidAppear(_ animated: Bool) { //viewDidAppear는 view가 화면에 완전히 나타난 후에 후출됨
+//        super.viewDidAppear(animated)
+//        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) { //0.5초 딜레이로 받음(느린 네트워크 상황을 묘사)
+//            self.todaySectionItems = TodaySectionItem(point: .default, today: .today).sectionItems
+//        }
+//        DispatchQueue.main.asyncAfter(deadline: .now() + 2.5) { //2.5초 딜레이로 받음(느린 네트워크 상황을 묘사)
+//            self.otherSectionItems = Benefit.others
+//        }
+//    }
     
     private func setupUI() {
         navigationItem.title = "혜택"
@@ -68,8 +65,8 @@ class BenefitListViewController: UIViewController {
         
         var snapshot = NSDiffableDataSourceSnapshot<Section, Item>()
         snapshot.appendSections([.today, .other])
-        snapshot.appendItems(todaySectionItems, toSection: .today)
-        snapshot.appendItems(otherSectionItems, toSection: .other)
+        snapshot.appendItems([], toSection: .today)
+        snapshot.appendItems([], toSection: .other)
         datasource.apply(snapshot)
         
         collectionView.collectionViewLayout = layout()
@@ -77,16 +74,34 @@ class BenefitListViewController: UIViewController {
     }
     
     private func bind() {
-        $todaySectionItems
+        benefitListViewModel.$todaySectionItems
             .receive(on: RunLoop.main)
             .sink { items in
                 self.applySnapshot(items: items, section: Section.today)
             }.store(in: &subscriptions)
         
-        $otherSectionItems
+        benefitListViewModel.$otherSectionItems
             .receive(on: RunLoop.main)
             .sink { items in
                 self.applySnapshot(items: items, section: Section.other)
+            }.store(in: &subscriptions)
+        
+        benefitListViewModel.benefitDidTapped
+            .receive(on: RunLoop.main)
+            .sink { benefit in
+                let sb = UIStoryboard(name: "ButtonBenefit", bundle: nil)
+                let vc = sb.instantiateViewController(withIdentifier: "ButtonBenefitViewController") as! ButtonBenefitViewController
+                vc.buttonBenefitViewModel = ButtonBenefitViewModel(benefit: benefit)
+                self.navigationController?.pushViewController(vc, animated: true)
+            }.store(in: &subscriptions)
+        
+        benefitListViewModel.pointDidTapped
+            .receive(on: RunLoop.main)
+            .sink { point in
+                let sb = UIStoryboard(name: "MyPoint", bundle: nil)
+                let vc = sb.instantiateViewController(withIdentifier: "MyPointViewController") as! MyPointViewController
+                vc.myPointViewModel = MyPointViewModel(point: point)
+                self.navigationController?.pushViewController(vc, animated: true)
             }.store(in: &subscriptions)
     }
     
@@ -138,26 +153,16 @@ class BenefitListViewController: UIViewController {
         section.interGroupSpacing = spacing
         return UICollectionViewCompositionalLayout(section: section)
     }
-    
-    
 }
 
 extension BenefitListViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) { //indexPath로 선택한 아이템의 값을 받음
         let item = datasource.itemIdentifier(for: indexPath)
-        print("----> \(item)")
         
-        if let benefit = item as? Benefit {
-            let sb = UIStoryboard(name: "ButtonBenefit", bundle: nil)
-            let vc = sb.instantiateViewController(withIdentifier: "ButtonBenefitViewController") as! ButtonBenefitViewController
-            vc.benefit = benefit
-            self.navigationController?.pushViewController(vc, animated: true)
-            
+        if let benefit = item as? Benefit { //클릭되면 if로 어떤 아이템인지 확인하여 send로 값을 보내서 스토리보드를 띄움
+            benefitListViewModel.benefitDidTapped.send(benefit)
         } else if let point = item as? MyPoint {
-            let sb = UIStoryboard(name: "MyPoint", bundle: nil)
-            let vc = sb.instantiateViewController(withIdentifier: "MyPointViewController") as! MyPointViewController
-            vc.point = point
-            self.navigationController?.pushViewController(vc, animated: true)
+            benefitListViewModel.pointDidTapped.send(point)
         } else {}
     }
 }

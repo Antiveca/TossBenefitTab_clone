@@ -6,22 +6,22 @@
 //
 
 import UIKit
+import Combine
 
 class ButtonBenefitViewController: UIViewController {
     
     @IBOutlet weak var actionButton: UIButton!
     
     @IBOutlet weak var verticalStackView: UIStackView!
-    var benefit: Benefit = .today
-    var benefitDetails: BenefitDetails = .default
+    
+    var buttonBenefitViewModel: ButtonBenefitViewModel!
+    var subscriptions = Set<AnyCancellable>()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         setupUI()
-        addGuides()
-        
-        actionButton.setTitle(benefit.ctaTitle, for: .normal)
+        bind()
+        buttonBenefitViewModel.fetchDetails()
     }
     
     private func setupUI() {
@@ -30,8 +30,24 @@ class ButtonBenefitViewController: UIViewController {
         actionButton.layer.cornerRadius = 5
     }
     
-    private func addGuides() {
-        let guideViews: [BenefitGuideView] = benefitDetails.guides.map { guide in //benefitDetails.guides배열의 딕셔너리 값을 하나씩 받음
+    
+    private func bind() {
+        buttonBenefitViewModel.$benefit
+            .receive(on: RunLoop.main)
+            .sink { benefit in
+                self.actionButton.setTitle(benefit.ctaTitle, for: .normal)
+            }.store(in: &subscriptions)
+        
+        buttonBenefitViewModel.$benefitDetails
+            .compactMap{ $0 }
+            .receive(on: RunLoop.main)
+            .sink { details in
+                self.addGuides(details: details)
+            }.store(in: &subscriptions)
+    }
+    
+    private func addGuides(details: BenefitDetails) {
+        let guideViews: [BenefitGuideView] = details.guides.map { guide in //benefitDetails.guides배열의 딕셔너리 값을 하나씩 받음
             let guideView = BenefitGuideView(frame: .zero)
             guideView.icon.image = UIImage(systemName: guide.iconName) //받아온 딕셔너리의 iconName임을 받아서 적용
             guideView.title.text = guide.guide //받아온 딕셔너리의 guide텍스트값을 적용
@@ -44,4 +60,6 @@ class ButtonBenefitViewController: UIViewController {
             ])
         }
     }
+    
+    
 }
